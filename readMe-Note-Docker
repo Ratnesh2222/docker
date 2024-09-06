@@ -27,5 +27,6 @@ below 3 command to run docker command without sudo
 -docker run image (download image and run it)
 -docker history hello-world (show layer of image)
 -docker pull image (download image)
--
+-docker run -d container (run container run detached mode)
+-docker run -it containerId (to enter container)
  
