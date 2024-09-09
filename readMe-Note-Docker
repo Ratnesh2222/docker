@@ -1,7 +1,7 @@
 ======================================================start date : 06Sep2024======
 This is the help file for docker for future reference
 ======================================================
-Day : 1
+Current status : session-4, 
 -------
 -create ubuntu ec2 instance i did 22
 -https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
@@ -28,5 +28,20 @@ below 3 command to run docker command without sudo
 -docker history hello-world (show layer of image)
 -docker pull image (download image)
 -docker run -d container (run container run detached mode)
--docker run -it containerId (to enter container)
+-docker run -it containerId (to enter container, interactive mode)
+-ctr pq (come out for guest os like ubuntu)
+-docker commit containerId imageName(to create and commit image )[one way of creating image ]
+-docker exec -it containerId /bin/bash (to inter in container)
+
+setup ubuntu in docker
+-docker run -it ubuntu:20.04
+-apt-get update
+-apt-get install vim (install vim)
+-docker commit ef2e9486b5e2 myubuntu1 (creating image from existing container)
+-docker run -it imageName:tag
+-apt-get install openjdk-8-jdk (install jdk)
+-docker commit 2f2b17be1241 myjdk:v8 (creating image)
+
+
+
  
