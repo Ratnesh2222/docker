@@ -17,16 +17,19 @@ below 3 command to run docker command without sudo
 -docker images (show list of images)
 -docker images -a
 -docker images -q
+-docker run image (download image and run it)
+-docker history hello-world (show layer of image)
+-docker pull image (download image)
+-docker search hello-world (search image on docker hub)
+
+-docker ps     (show running container)
+-docker ps -a  (show all container )
 -docker rm containId (delete container)
 -docker rm -f containId (deleting forcefully container)
 -docker rm $(docker ps -aq) (remove all container)
 -docker ps -aq(list container id)
--docker ps     (show running container)
--docker ps -a  (show all container )
--docker search hello-world (search image on docker hub)
--docker run image (download image and run it)
--docker history hello-world (show layer of image)
--docker pull image (download image)
+
+
 -docker run -d container (run container run detached mode)
 -docker run -it containerId (to enter container, interactive mode)
 -ctr pq (come out for guest os like ubuntu)
