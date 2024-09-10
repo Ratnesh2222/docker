@@ -1,7 +1,7 @@
 ======================================================start date : 06Sep2024======
 This is the help file for docker for future reference
 ======================================================
-Current status : session-4, 
+Current status : session-5, 
 -------
 -create ubuntu ec2 instance i did 22
 -https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
@@ -21,6 +21,7 @@ below 3 command to run docker command without sudo
 -docker history hello-world (show layer of image)
 -docker pull image (download image)
 -docker search hello-world (search image on docker hub)
+-docker rmi imageId(remove image, use -f for forcefully)
 
 -docker ps     (show running container)
 -docker ps -a  (show all container )
@@ -28,6 +29,8 @@ below 3 command to run docker command without sudo
 -docker rm -f containId (deleting forcefully container)
 -docker rm $(docker ps -aq) (remove all container)
 -docker ps -aq(list container id)
+-docker tag imageId imageName:tag (add name and tag to image)
+-docker build -t myhi:v1.0 . (build image with image name myHi and version v1.0)
 
 
 -docker run -d container (run container run detached mode)
@@ -44,6 +47,44 @@ setup ubuntu in docker
 -docker run -it imageName:tag
 -apt-get install openjdk-8-jdk (install jdk)
 -docker commit 2f2b17be1241 myjdk:v8 (creating image)
+
+building docker file (in session - 5)
+1) create helloapp folder and create Dockerfile in this with below lines
+FROM ubuntu:20.04
+LABEL maintainer sri@jlcindia.com
+RUN apt-get -y update
+RUN apt-get -y install openjdk-8-jdk wget
+RUN mkdir /home/myjlc
+COPY Hello.java /home/myjlc
+WORKDIR /home/myjlc
+RUN javac Hello.java
+CMD ["java", "Hello"]
+2) ceate Hello.java
+3) docker build .
+
+Example: docker file using base image openjdk
+FROM openjdk:8
+LABEL maintainer sri@jlcindia.com
+RUN mkdir /home/myjlc
+COPY Hi.java /home/myjlc
+WORKDIR /home/myjlc
+RUN javac Hi.java
+CMD ["java", "Hi"]
+
+Example: docker file using base image tomcat
+FROM ubuntu:20.04
+LABEL maintainer sri@jlcindia.com
+RUN apt-get -y update
+RUN apt-get -y install openjdk-8-jdk wget
+RUN wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.55/bin/apache-tomcat-8.5.55.tar.gz -O /tmp/tomcat.tar.gz
+RUN cd /tmp && tar xvfz tomcat.tar.gz
+RUN mv /tmp/apache-tomcat-8.5.55 /opt/tomcat
+EXPOSE 8080
+CMD /opt/tomcat/bin/catalina.sh run
+
+----------session - 6-----------------10sep---
+
+
 
 
 
