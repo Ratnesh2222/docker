@@ -22,6 +22,9 @@ below 3 command to run docker command without sudo
 -docker pull image (download image)
 -docker search hello-world (search image on docker hub)
 -docker rmi imageId(remove image, use -f for forcefully)
+-docker run -d -P imageName:tag (run the image and by -P create port dynamically )
+-docker image prune -a (remove all image which have not having running container)
+-docker system prune -a (remove all unused resource)
 
 -docker ps     (show running container)
 -docker ps -a  (show all container )
@@ -38,6 +41,7 @@ below 3 command to run docker command without sudo
 -ctr pq (come out for guest os like ubuntu)
 -docker commit containerId imageName(to create and commit image )[one way of creating image ]
 -docker exec -it containerId /bin/bash (to inter in container)
+-ctr+p+q : to come out from contaner
 
 setup ubuntu in docker
 -docker run -it ubuntu:20.04
@@ -60,7 +64,7 @@ WORKDIR /home/myjlc
 RUN javac Hello.java
 CMD ["java", "Hello"]
 2) ceate Hello.java
-3) docker build .
+3) docker build . (build image without name and tag)
 
 Example: docker file using base image openjdk
 FROM openjdk:8
@@ -82,7 +86,25 @@ RUN mv /tmp/apache-tomcat-8.5.55 /opt/tomcat
 EXPOSE 8080
 CMD /opt/tomcat/bin/catalina.sh run
 
+- docker build -t mytom:v1.0 .(create image with name mytom and tag v1.0)
+
 ----------session - 6-----------------10sep---
+-port no mapping is require because may be 2 tomcat in docker running on same port
+-every docker have their private ip which host know
+-docker run -d -p hostpost:dockerPort imageName:tag (now you can access app by hostPort)
+-Example : docker run -d -p 8080:8080 mytom:v1.0
+
+----------session - 7-----------------10sep---
+-creating docker image using above created tomcat image
+-create Dockerfile with below entry
+FROM mytom:v1.0
+COPY index.jsp /opt/tomcat/webapps/ROOT
+-create index.jsp
+-docker run -d -p 88:8080 myapp:v1.0
+-test at 88 port, data display as index.jsp
+
+Spring boot start at : 53min------------
+
 
 
 
