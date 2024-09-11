@@ -1,6 +1,7 @@
 ======================================================start date : 06Sep2024======
 This is the help file for docker for future reference
 ======================================================
+rm -rf docker : delete all folder and file 
 Current status : session-5, 
 -------
 -create ubuntu ec2 instance i did 22
@@ -34,6 +35,7 @@ below 3 command to run docker command without sudo
 -docker ps -aq(list container id)
 -docker tag imageId imageName:tag (add name and tag to image)
 -docker build -t myhi:v1.0 . (build image with image name myHi and version v1.0)
+-docker logs containerId (to see the log)
 
 
 -docker run -d container (run container run detached mode)
@@ -104,6 +106,17 @@ COPY index.jsp /opt/tomcat/webapps/ROOT
 -test at 88 port, data display as index.jsp
 
 Spring boot start at : 53min------------
+Dockerfile for spring boot app:
+FROM openjdk:11
+ADD demo/target/demo-0.0.1-SNAPSHOT.jar demo-0.0.2-SNAPSHOT.jar
+EXPOSE 12345
+ENTRYPOINT ["java","-jar","demo-0.0.2-SNAPSHOT.jar"]
+
+docker build -t springapp:v2.0 . (build docker image)
+docker run -p 88:8080 springapp:v2.0 (run docker image)
+Note : if you update code in spring app and build it, then you again need to create image to reflect changes
+
+
 
 
 

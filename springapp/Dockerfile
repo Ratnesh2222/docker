@@ -1,4 +1,4 @@
-FROM openjdk:8
-ADD myjlcapp-boot.jar myjlcapp-boot.jar
+FROM openjdk:11
+ADD demo/target/demo-0.0.1-SNAPSHOT.jar demo-0.0.2-SNAPSHOT.jar
 EXPOSE 12345
-ENTRYPOINT ["java","-jar","myjlcapp-boot.jar"]
+ENTRYPOINT ["java","-jar","demo-0.0.2-SNAPSHOT.jar"]
