@@ -26,6 +26,8 @@ below 3 command to run docker command without sudo
 -docker run -d -P imageName:tag (run the image and by -P create port dynamically )
 -docker image prune -a (remove all image which have not having running container)
 -docker system prune -a (remove all unused resource)
+-docker image save imageId -o tarfineName.tar.gz (save image to tar file)
+-docker image load -i tarfineName.tar.gz (create image from tar file)
 
 -docker ps     (show running container)
 -docker ps -a  (show all container )
@@ -107,6 +109,7 @@ COPY index.jsp /opt/tomcat/webapps/ROOT
 
 Spring boot start at : 53min------------
 Dockerfile for spring boot app:
+
 FROM openjdk:11
 ADD demo/target/demo-0.0.1-SNAPSHOT.jar demo-0.0.2-SNAPSHOT.jar
 EXPOSE 12345
@@ -116,8 +119,32 @@ docker build -t springapp:v2.0 . (build docker image)
 docker run -p 88:8080 springapp:v2.0 (run docker image)
 Note : if you update code in spring app and build it, then you again need to create image to reflect changes
 
+----------session - 8-----------------11sep---
+docker image tag myapp:v1.0 ratneshaws/myapp:v1.0 (tag existing image to push in docker hub)
+docker image push ratneshaws/myapp:v1.0 (push image to docker hub)
 
+----------session - 9-----------------11sep---
+life cycle of container
+create
+start (-> running start)
+run [create, start] (-> running start)
+rm (running -> deleted )
+kill (running -> stoped) 
+stop (running -> stoped) [safe exist]
+pause(running -> pause)
+unPause(pause -> running)
 
+----------session - 10-----------------11sep---
+Image layer  : different comman in docker file
+Dangling image: any layer which is not in relation with any tagged image
+Unused imgae : not used in any container
+ADD vs COPY in docker file:
+- both syntax same
+- Both will used to move the host/remort files to docker image
+-  ADD can handle remove url and can auto-extract tar
+
+like for docker file command : 
+https://docs.docker.com/reference/dockerfile/#:~:text=A%20Dockerfile%20is%20a%20text,can%20use%20in%20a%20Dockerfile.
 
 
 
