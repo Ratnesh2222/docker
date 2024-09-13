@@ -146,8 +146,24 @@ ADD vs COPY in docker file:
 like for docker file command : 
 https://docs.docker.com/reference/dockerfile/#:~:text=A%20Dockerfile%20is%20a%20text,can%20use%20in%20a%20Dockerfile.
 
+ENTRTPOINT: (can not override)
+CMD: (mandatory to use in base image and can be override )
 
+----------session - 11-----------------13sep---
+storage and volume
+docker component :
+1) docker client
+2) docker demon
+3) docker private registry
+All above 3 together called docker engine
+Note : if the application docker container down then all the log is lost
+Note : if the database container down then all data lost
+Solution : store data outside of container, we can save in the host system or outside
+we can mount container file system to host file system(bind mount)
+volume controll by docker engin and persistence storage
+Most popular storage driver : overlay2
 
+----------session - 12-----------------13sep---
 
 
  

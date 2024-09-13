@@ -1,5 +1,4 @@
 FROM openjdk:8
-LABEL maintainer sri@jlcindia.com
 RUN mkdir /home/myjlc
 COPY Hi.java /home/myjlc
 WORKDIR /home/myjlc
