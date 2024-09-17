@@ -95,7 +95,7 @@ CMD /opt/tomcat/bin/catalina.sh run
 ----------session - 6-----------------10sep---
 -port no mapping is require because may be 2 tomcat in docker running on same port
 -every docker have their private ip which host know
--docker run -d -p hostpost:dockerPort imageName:tag (now you can access app by hostPort)
+-docker run -d -p hostport:dockerPort imageName:tag (now you can access app by hostPort)
 -Example : docker run -d -p 8080:8080 mytom:v1.0
 
 ----------session - 7-----------------10sep---
@@ -164,6 +164,25 @@ volume controll by docker engin and persistence storage
 Most popular storage driver : overlay2
 
 ----------session - 12-----------------13sep---
+
+type of mount:
+1)tmpfs mounts
+2)bind mounts
+3)Volumes
+
+docker inspect dockerId (give the details of container)
+docker run -d --publish 2345:8080 --name= giveContainerName -- mount type=tmpfs, destination=/jlcapp myjlcapp:latest
+Create valumes:
+docker volume create volumeName
+volume is created in /var/lib/docker/Volumes
+sudo bash
+cd /var/lib/docker/Volumes
+exit
+
+create container and attach volume
+docker run -d -p 1234:8080 --name = containerName --volume volumeName:/volumeTest
+
+ 
 
 
  

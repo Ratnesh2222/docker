@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyController {
     @GetMapping("/get")
     public String get() {
-        return "hi, i am sprinboot";
+        return "hi, i am in sprinboot....";
     }
 }
